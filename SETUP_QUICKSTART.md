@@ -76,14 +76,14 @@ cd backend
 pip install -r requirements.txt
 ```
 
-### Download and run the Zephyr-7B-β model locally
+2. **Download and run the Zephyr-7B-β model locally**
 
 When you start the server, it will automatically download the
 4-bit quantized version of Zephyr (\~5--6 GB download).\
 Make sure you have at least **12--14 GB VRAM free** (or **16GB+ system
 RAM**).
 
-### Start the FastAPI backend
+3. **Start the FastAPI backend**
 
 ``` bash
 uvicorn main:app --reload --port 8000
@@ -94,7 +94,7 @@ You need to get this kind of output:
     Model loaded successfully!
     Server running at http://localhost:8000
 
-### In another terminal, start the React frontend
+4. **In another terminal, start the React frontend**
 
 ``` bash
 cd frontend
@@ -102,7 +102,7 @@ npm install
 npm run dev
 ```
 
-### Set the backend URL
+5. **Set the backend URL**
 
 When the frontend opens, it will ask for the API URL.\
 Just type or paste this:
@@ -111,9 +111,9 @@ Just type or paste this:
 
 Press Enter → the app connects instantly.
 
-### Done!
+6. **Run the App**!
 
-Open **http://localhost:5173** (or the port Vite shows) and start
+Open **http://localhost:3000** (or the port Vite shows) and start
 typing ingredients.
 
 
