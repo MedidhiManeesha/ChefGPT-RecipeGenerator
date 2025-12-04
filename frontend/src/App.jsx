@@ -5,7 +5,7 @@ import RecipeDisplay from './components/RecipeDisplay';
 import Chat from './components/Chat';
 import './index.css';
 
-const API_URL = "https://xxxx.ngrok-free.app/api/generate-recipe"; // If using colab backend
+const API_URL = "https://ava-electrostrictive-transitorily.ngrok-free.dev/api/generate-recipe"; // If using colab backend
 // const API_URL = "http://localhost:8000/api/generate-recipe"; // If using local backend 
 
 function App() {
