@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+package-lock.json  # Optional: some prefer to include this
+
+# Build outputs
+dist/
+build/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Colab/Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Large datasets (uncomment if you have large files)
+# dataset/*.jsonl
+# dataset/*.csv
+# *.pth
+# *.pt
+# *.bin
+# *.safetensors
