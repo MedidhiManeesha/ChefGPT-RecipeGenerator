@@ -1,6 +1,6 @@
-# ChefGPT - AI Recipe Generator
+# ChefGPT - Recipe Generator
 
-> An AI recipe generation system by utilizing fine-tuned language models, creating authentic Indian recipes from your available ingredients.
+> An AI recipe generation system that utilizes Large language models, creating authentic Indian recipes from your available ingredients.
 
 
 ## Demo Video
@@ -12,7 +12,7 @@
 
 ## Project Overview
 
-This project demonstrates an end-to-end AI system for generating authentic Indian recipes using fine-tuned language models. I experimented with two different models—**TinyLlama-1.1B-chat-v1.0** and **Zephyr-7B-β**—to find the best approach for creative, structured recipe generation.
+This project demonstrates an AI system for generating authentic Indian recipes using large language models. I experimented with two different models **TinyLlama-1.1B-chat-v1.0** and **Zephyr-7B-β** to find the best approach for recipe generation.
 
 ---
 
@@ -30,11 +30,11 @@ This project demonstrates an end-to-end AI system for generating authentic India
 
 ### Phase 1: TinyLlama (Experimental)
 
-I started by fine-tuning **TinyLlama-1.1B-chat-v1.0** on my custom 1000-recipe Indian dataset using QLoRA in Google Colab. The first training run was a disaster—loss dropped to 0.0000 due to wrong hyperparameters (too high learning rate, no weight decay). After fixing the training arguments (lowered LR, added weight decay, proper batch size + gradient accumulation), I achieved a final loss of ~1.14. The model learned the format but outputs felt repetitive and lacked creativity.
+I started by fine-tuning **TinyLlama-1.1B-chat-v1.0** on my custom 1000-recipe Indian dataset using QLoRA in Google Colab. I achieved a final loss of ~1.14. The model learned the format but outputs felt repetitive and lacked creativity.
 
 ### Phase 2: Zephyr-7B-β (Final Model)
 
-I switched to **Zephyr-7B-β** because it's currently one of the best open models for structured, creative text generation. Running it in Colab (T4 GPU) with 4-bit quantization + ngrok tunneling, I connected it to my local React frontend. The results were stunning—dynamic, authentic Indian recipes with proper unique steps and natural language, all without any fine-tuning!
+I switched to **Zephyr-7B-β** because it's the best open LLM model for structured, creative text generation. Running it in Colab (T4 GPU) with 4-bit quantization + ngrok tunneling, I connected it to my local React frontend. The results were authentic Indian recipes with proper unique steps and I ran this model without any fine-tuning.
 
 ---
 
@@ -60,7 +60,7 @@ I switched to **Zephyr-7B-β** because it's currently one of the best open model
 ## Tech Stack
 
 ### Backend
-- **FastAPI** - Modern Python web framework
+- **FastAPI** - Python web framework
 - **Hugging Face Transformers** - Model loading and inference
 - **PyTorch** - Deep learning framework
 - **pyngrok** - Public URL tunneling for Colab
@@ -69,7 +69,7 @@ I switched to **Zephyr-7B-β** because it's currently one of the best open model
 ### Frontend
 - **React 18** - UI framework
 - **Vite** - Build tool and dev server
-- **Tailwind CSS** - Utility-first styling
+- **Tailwind CSS** - CSS Framework
 - **Axios** - HTTP client
 
 ### ML/Infrastructure
