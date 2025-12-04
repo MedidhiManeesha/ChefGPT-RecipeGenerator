@@ -31,11 +31,25 @@ My laptop has only 4GB RAM + no GPU, so I did Model training on Google Colab (fr
    !pip install -r requirements.txt
    ```
 
-4. **Run the backend**:
+4. **Run the backend**:  
    - **Zephyr-7B-β**: Open `notebooks/Zephyr_Model.ipynb` in Colab
 
-5. **Copy the ngrok URL**:
-   - The server will print a public URL (e.g., `https://xxxx.ngrok.io/api/generate-recipe`)
+5. **Expose the backend using ngrok**:  
+   - Create a free account at **ngrok.com**  
+   - Copy your **ngrok auth token** from the dashboard  
+   - Authenticate ngrok in your environment:
+     ```bash
+     ngrok config add-authtoken YOUR_AUTH_TOKEN
+     ```
+   - Run ngrok to expose the FastAPI backend:
+     ```bash
+     ngrok http 8000
+     ```
+   - The terminal will generate a **public URL** (e.g.,  
+     `https://xxxx.ngrok.io/api/generate-recipe`) —  
+     copy this URL to access your backend publicly.
+     Later, Use this URL at API_URL in App.jsx file
+
 
 ### Step 2: Frontend Setup (Local Machine)
 
@@ -51,7 +65,7 @@ My laptop has only 4GB RAM + no GPU, so I did Model training on Google Colab (fr
 
 3. **Configure API URL**:
    - Open `frontend/src/App.jsx`
-   - Replace the `API_URL` constant with your ngrok URL from Step 1:
+   - Replace the `API_URL` constant with your ngrok URL from Step 1 (Colab Backend Setup) 5th subpoint:
    ```javascript
    const API_URL = "https://xxxx.ngrok.io/api/generate-recipe";
    ```
