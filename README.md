@@ -92,7 +92,7 @@ This project demonstrates an AI system for generating authentic Indian recipes u
       │    • servings                                      │
       │    • ingredients list                              │
       │    • steps                                         │
-      │ - Send parsed data -> RecipeDisplay.jsx             │
+      │ - Send parsed data -> RecipeDisplay.jsx            │
       │ - Add assistant message to chat UI                 │
       └────────────────────────────────────────────────────┘
                                 │
