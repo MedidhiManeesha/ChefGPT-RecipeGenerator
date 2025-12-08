@@ -14,6 +14,100 @@
 
 This project demonstrates an AI system for generating authentic Indian recipes using large language models. I experimented with two different models **TinyLlama-1.1B-chat-v1.0** and **Zephyr-7B-β** to find the best approach for recipe generation.
 
+                          ┌────────────────────────┐
+                          │        User Opens      │
+                          │        chefGPT App     │
+                          └────────────┬───────────┘
+                                       │
+                                       ▼
+                          ┌──────────────────────────┐
+                          │  React App Loads App.jsx,│
+                          │  Chat Components         │
+                          └────────────┬─────────────┘
+                                       │
+                                       ▼
+                          ┌─────────────────────────┐
+                          │ Chat.jsx:               │
+                          │  Calls /health API      │
+                          │  Checks backend status  │
+                          └────────────┬────────────┘
+                                       │ Backend online?
+                     ┌─────────────────┴─────────────────┐
+                     │ Yes                               │ No
+                     ▼                                   ▼
+      ┌──────────────────────────────┐     ┌────────────────────────────────┐
+      │ Shows greeting message       │     │ Shows "Chef offline" message   │
+      └─────────────┬────────────────┘     └────────────────────────────────┘
+                    │
+                    ▼
+       ┌──────────────────────────────────┐
+       │ User Types Ingredients in Chat   │
+       │ e.g. "chicken, rice, garlic"     │
+       └───────────────────┬──────────────┘
+                           │ Press Enter / Click Generate
+                           ▼
+       ┌──────────────────────────────────┐
+       │ Chat.jsx                         │
+       │ - parseIngredients() splits text │
+       │ - Adds user message to UI        │
+       │ - Shows loading animation        │
+       └───────────────────┬──────────────┘
+                           │ Sends POST Request
+                           ▼
+     ┌───────────────────────────────────────────┐
+     │  Frontend -> Backend API Call             │
+     │  POST /api/generate-recipe                │
+     │  Body: { ingredients: ["chicken", ...] }  │
+     └────────────────────────┬──────────────────┘
+                              │
+                              ▼
+               ┌──────────────────────────────────┐
+               │      FastAPI Backend (Colab)     │
+               ├──────────────────────────────────┤
+               │ Validates ingredients list       │
+               │ Calls generate_recipe()          │
+               └──────────────────┬───────────────┘
+                                  │
+                                  ▼
+         ┌───────────────────────────────────────────────┐
+         │  generate_recipe()                            │
+         │  - Builds Chef Prompt                         │
+         │  - Tokenizer encodes prompt                   │
+         │  - Zephyr-7B model.generate() produces text   │
+         │  - Decodes LLM output                         │
+         └───────────────────┬───────────────────────────┘
+                             │  Returns recipe text
+                             ▼
+             ┌─────────────────────────────────────────┐
+             │  FastAPI returns JSON:                  │
+             │  { recipe: "Full recipe text..." }      │
+             └──────────────────┬──────────────────────┘
+                                │
+                                ▼
+      ┌────────────────────────────────────────────────────┐
+      │ Frontend receives JSON                             │
+      │ - parseRecipe() extracts                           │
+      │    • title                                         │
+      │    • time                                          │
+      │    • servings                                      │
+      │    • ingredients list                              │
+      │    • steps                                         │
+      │ - Send parsed data -> RecipeDisplay.jsx             │
+      │ - Add assistant message to chat UI                 │
+      └────────────────────────────────────────────────────┘
+                                │
+                                ▼
+                     ┌────────────────────────┐
+                     │ RecipeDisplay.jsx      │
+                     │ Shows Ingredients list,│
+                     │ Instruction steps      │
+                     └────────────────────────┘
+                                │
+                                ▼
+                     ┌────────────────────────┐
+                     │ User sees final recipe │
+                     └────────────────────────┘
+
 ---
 
 ### Key Features
